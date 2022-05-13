@@ -2,7 +2,7 @@ const DiscordJS = require('discord.js');
 const { Intents } = require('discord.js');
 const dotenv = require('dotenv');
 dotenv.config();
-const prefix ='|';
+const prefix ='--';
 const fs = require('fs');
 
 
@@ -29,7 +29,7 @@ for (const file of commandFiles){
 
 
 
-client.on('messageCreate',message =>{
+client.on('messageCreate',async message =>{
     if(!message.content.startsWith(prefix) || message.author.bot)return;
 
     const args = message.content.slice(prefix.length).split(/ +/);
@@ -37,17 +37,23 @@ client.on('messageCreate',message =>{
 
     if(command === 'ping'){
         client.commands.get('ping').execute(message, args);
+    }else if(command === 'sauce'){
+        const repliedTo = await message.channel.messages.fetch(message.reference.messageID);
+
+        console.log(repliedTo.content);
+        //client.commands.get('saucenao').execute(message,args);
     }
+    
 })
 
 
-client.on('interactionCreate', async interaction => {
-    if (!interaction.isCommand()) return;
+// client.on('interactionCreate', async interaction => {
+//     if (!interaction.isCommand()) return;
 
-    if (interaction.commandName === 'ping') {
-        await interaction.reply('Pong!');
-    }
-});
+//     if (interaction.commandName === 'ping') {
+//         await interaction.reply('Pong!');
+//     }
+// });
     
     
 
