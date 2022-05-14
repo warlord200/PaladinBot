@@ -38,10 +38,14 @@ client.on('messageCreate',async message =>{
     if(command === 'ping'){
         client.commands.get('ping').execute(message, args);
     }else if(command === 'sauce'){
-        const repliedTo = await message.channel.messages.fetch(message.reference.messageID);
-
-        console.log(repliedTo.content);
-        //client.commands.get('saucenao').execute(message,args);
+        if(message.reference === null)return;
+        await message.fetchReference().then(msg => {
+            if (msg.attachments.size !== 0){
+                const reply = msg.attachments.first().url;
+                console.log(reply)
+                client.commands.get('saucenao').execute(message,reply);
+            }
+        })
     }
     
 })

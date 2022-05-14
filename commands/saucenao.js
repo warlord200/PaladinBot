@@ -10,8 +10,8 @@ const sagiriClient = Sagiri(process.env.SAUCE_TOKEN);
 module.exports = {
     name:'saucenao',
     description: 'Retrieves sauce for images',
-    async execute(message, args){
-        const imageLink = `https://media.discordapp.net/attachments/933371160404578375/974333532333813760/IMG_0803.jpg?width=322&height=563`;
+    async execute(message, reply){
+        const imageLink = reply;
         const response = await sagiriClient(imageLink);
         console.log(response)
         for(let i = 0; i< 3; i++){
