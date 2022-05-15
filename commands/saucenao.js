@@ -21,7 +21,6 @@ module.exports = {
                         { name: 'Link', value: response[i].url}
                     )
                     .addFields(
-                        { name: '\u200B', value: '\u200B'},
                         { name: 'Site', value: `${response[i].site}`, inline: true},
                         { name: 'Index', value: `${response[i].index}`, inline: true}
                     )
@@ -35,8 +34,8 @@ module.exports = {
                     embed.setColor('#B8293D')
                 }
 
-                if(response[i].author !== null){
-                    embed.footer({ text: `Author: ${response[i].authorName}`})
+                if (typeof response[i].authorName === 'string' || response[i].authorName instanceof String){
+                    embed.setFooter({ text: `Author: ${response[i].authorName}`})
                 }
 
 
