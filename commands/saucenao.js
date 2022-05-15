@@ -15,39 +15,50 @@ module.exports = {
         const response = await sagiriClient(imageLink);
         console.log(response)
         for(let i = 0; i< 3; i++){
-            if(response[i].similarity > 70){
-            const passedEmbed = new MessageEmbed()
-                    .setTitle(`Results ${i+1}: Good match`)
-                    .setColor('#33AB5F')
-                    .addFields(
-                        { name: 'Link', value: response[i].url}
-                    )
-                    .addFields(
-                        { name: 'Additional information', value: 
-                        `Similarity: ${response[i].similarity}
-                         Site: ${response[i].site}`}
-                    )
-                    .setThumbnail(response[i].thumbnail)
-
-                message.channel.send({ embeds:[passedEmbed]})
-
-                
-            }else{
             const embed = new MessageEmbed()
-                    .setTitle(`Results ${i+1}: Bad match`)
-                    .setColor('#B8293D')
                     .addFields(
+                        { name: 'Similarity', value: `Reference image is ${response[i].similarity}% similar to the original image `},
                         { name: 'Link', value: response[i].url}
                     )
                     .addFields(
-                        { name: 'Additional information', value: 
-                        `Similarity: ${response[i].similarity}
-                         Site: ${response[i].site}`}
+                        { name: '\u200B', value: '\u200B'},
+                        { name: 'Site', value: `${response[i].site}`, inline: true},
+                        { name: 'Index', value: `${response[i].index}`, inline: true}
                     )
-                    .setThumbnail(response[i].thumbnail)
+                    .setThumbnail(response[i].thumbnail);
 
-                    message.channel.send({ embeds:[embed]})
-            }
+                if(response[i].similarity > 70){
+                    embed.setTitle(`Results ${i+1}: Good match`)
+                    embed.setColor('#33AB5F')
+                }else{
+                    embed.setTitle(`Results ${i+1}: Bad match`)
+                    embed.setColor('#B8293D')
+                }
+
+                if(response[i].author !== null){
+                    embed.footer({ text: `Author: ${response[i].authorName}`})
+                }
+
+
+                message.channel.send({ embeds:[embed]})
+
+            // else{
+            // const embed = new MessageEmbed()
+            //         .setTitle(`Results ${i+1}: Bad match`)
+            //         .setColor('#B8293D')
+            //         .addFields(
+            //             { name: 'Similarity', value: `Reference image is ${response[i].similarity}% similar to the original image `},
+            //             { name: 'Link', value: response[i].url}
+            //         )
+            //         .addFields(
+            //             { name: '\u200B', value: '\u200B'},
+            //             { name: 'Site', value: `${response[i].site}`, inline: true},
+            //             { name: 'Index', value: `${response[i].index}`, inline: true}
+            //         )
+            //         .setThumbnail(response[i].thumbnail)
+
+            //         message.channel.send({ embeds:[embed]})
+            // }
             
             
         }
