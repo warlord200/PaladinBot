@@ -48,6 +48,9 @@ client.on('messageCreate',async message =>{
                 client.commands.get('saucenao').execute(message,reply);
             }
         })
+    }if(command === 'sus'){
+        client.commands.get('sos').execute(message,reply);
+
     }
     
 })
