@@ -22,10 +22,9 @@ module.exports = {
                     )
                     .addFields(
                         { name: 'Site', value: `${response[i].site}`, inline: true},
-                        { name: 'Index', value: `${response[i].index}`, inline: true}
+                        { name: 'Source', value: `${response[i].source}`, inline: true}
                     )
                     .setThumbnail(response[i].thumbnail);
-
                 if(response[i].similarity > 70){
                     embed.setTitle(`Results ${i+1}: Good match`)
                     embed.setColor('#33AB5F')
