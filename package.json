@@ -5,7 +5,8 @@
     "discord-api-types": "^0.32.1",
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.1",
-    "sagiri": "github:warlord200/Sagiri",
+    "patch-package": "^6.4.7",
+    "sagiri": "^3.1.1",
     "typescript": "^4.6.4"
   }
 }
