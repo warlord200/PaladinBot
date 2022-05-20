@@ -1,16 +1,17 @@
 diff --git a/node_modules/sagiri/dist/index.js b/node_modules/sagiri/dist/index.js
-index 5a070bc..8401be0 100644
+index 5a070bc..c327e59 100644
 --- a/node_modules/sagiri/dist/index.js
 +++ b/node_modules/sagiri/dist/index.js
-@@ -84,6 +84,7 @@ const sagiri = (token, defaultOptions = { results: 5 }) => {
+@@ -84,6 +84,8 @@ const sagiri = (token, defaultOptions = { results: 5 }) => {
          return results.map((result) => {
              const { url, name, id, authorName, authorUrl } = util_1.resolveResult(result);
              const { header: { similarity, thumbnail }, } = result;
 +            const { data: {source}} = result;
++            console.log('Patch works!');
              return {
                  url,
                  site: name,
-@@ -92,6 +93,7 @@ const sagiri = (token, defaultOptions = { results: 5 }) => {
+@@ -92,6 +94,7 @@ const sagiri = (token, defaultOptions = { results: 5 }) => {
                  thumbnail,
                  authorName,
                  authorUrl,
