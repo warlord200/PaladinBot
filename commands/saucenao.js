@@ -36,7 +36,7 @@ module.exports = {
                 if (typeof response[i].authorName === 'string' || response[i].authorName instanceof String){
                     embed.setFooter({ text: `Author: ${response[i].authorName}`})
                 }
-                console.log(response.source[i])
+                console.log(response[i].source);
 
 
                 message.channel.send({ embeds:[embed]})
