@@ -37,7 +37,7 @@ client.on('messageCreate',async message =>{
 
     if(command === 'ping'){
         client.commands.get('ping').execute(message, args);
-    }else if(command === 'sauce'){
+    }else if(command === 'sauce'||command === 's'){
         if(message.reference === null)return;
 
         // check if it is a reply 
@@ -50,18 +50,6 @@ client.on('messageCreate',async message =>{
                 client.commands.get('saucenao').execute(message,reply);
             }
         })
-    }if(command === 'sus'){
-        if(message.reference === null)return;
-        await message.fetchReference().then(msg => {
-            if (msg.attachments.size !== 0 || msg.content.includes('jpg','jpeg','png')){
-                const reply = (msg.attachments.size !== 0)? 
-                            msg.attachments.first().url 
-                            : msg.content;
-                console.log(reply)
-                client.commands.get('saucenao2').execute(message,reply);
-            }
-        })
-
     }
     
 })

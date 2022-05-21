@@ -41,12 +41,13 @@ module.exports = {
                     { name: 'Link', value: response[0].url}
                 )
             }
-            for(let i = 1;i < 5;i++){
+            for(let i = 0;i < 5;i++){
+                if(twitterURL.test(response[0].source)||pixivURL.test(response[0].url)){continue}
                 if(response[i].similarity > 70){
                     embed.addFields(
-                        { name: '** **', value: response[i].url}
+                        { name: `Additional Results ${i+1}:`, value: response[i].url}
                     )
-                }
+                }else{continue}
             }
 
 
