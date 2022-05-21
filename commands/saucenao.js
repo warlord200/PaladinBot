@@ -36,17 +36,17 @@ module.exports = {
                     { name:'Link', value: response[0].source}
                 )
 
+            }else if(pixivURL.test(response[0].url)){
+                embed.addFields(
+                    { name: 'Link', value: response[0].url}
+                )
+            }
             for(let i = 1;i < 5;i++){
                 if(response[i].similarity > 70){
                     embed.addFields(
                         { name: '** **', value: response[i].url}
                     )
                 }
-            }
-            }else if(pixivURL.test(response[0].url)){
-                embed.addFields(
-                    { name: 'Link', value: response[0].url}
-                )
             }
 
 
