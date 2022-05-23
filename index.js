@@ -37,6 +37,8 @@ client.on('messageCreate',async message =>{
 
     if(command === 'ping'){
         client.commands.get('ping').execute(message, args);
+
+
     }else if(command === 'sauce'||command === 's'){
         if(message.reference === null)return;
 
@@ -50,6 +52,8 @@ client.on('messageCreate',async message =>{
                 client.commands.get('saucenao').execute(message,reply);
             }
         })
+    }else if(command === 'help'){
+        client.commands.get('help').execute(message,args);
     }
     
 })

@@ -31,7 +31,7 @@ module.exports = {
         // check for twitter or pixiv link 
 
         if(response[0].similarity > 70){
-            embed.setTitle('Sir, this is your requested sauce.');
+            embed.setTitle('Sir, this is thy did request sauce.');
             embed.setColor('#33AB5F');
             embed.setImage
             ('https://images-ext-1.discordapp.net/external/EKDKQAsSwImLlUTKDvugutKCH1qcpbYMfzofsKmI2io/https/1.bp.blogspot.com/-iMhL9T7K8N0/XbujvmbiKDI/AAAAAAABr14/9F9TNWb3j5wMe9f4mjnFaVgcW9Ses6rfwCKgBGAsYHg/s1600/Azur%252BLane%252B-%252BEpisode%252B5%252B-%252BBelfast%252BElegant%252BCurtsie.gif');
@@ -54,7 +54,7 @@ module.exports = {
 
 
         }else{
-            embed.setTitle(`I'm so sorry sir, can't find your sauce, this is the nearest one D:`);
+            embed.setTitle(`Deepest apologies, can't findeth thy sauce, this is the nearest one D:`);
             embed.setColor('#B8293D');
             embed.setImage('https://giffiles.alphacoders.com/938/93869.gif')
             embed.addFields(
