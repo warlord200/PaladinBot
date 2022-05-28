@@ -48,12 +48,28 @@ client.on('messageCreate',async message =>{
                 const reply = (msg.attachments.size !== 0)? 
                             msg.attachments.first().url 
                             : msg.content;
-                console.log(reply)
+                console.log(reply);
                 client.commands.get('saucenao').execute(message,reply);
             }
         })
     }else if(command === 'help'){
         client.commands.get('help').execute(message,args);
+    }else if(command === 'check'|| command === 'ch'){
+        if(message.reference === null){
+            message.channel.send('Thou shall reply to an image so I can work with');
+            return;
+        };
+
+        // check if it is a reply 
+        await message.fetchReference().then(msg => {
+            if (msg.attachments.size !== 0 || msg.content.includes('jpg','jpeg','png')){
+                const reply = (msg.attachments.size !== 0)? 
+                            msg.attachments.first().url 
+                            : msg.content;
+                console.log(reply)
+                client.commands.get('Tesseract').execute(message,reply);
+            }
+        })
     }
     
 })
