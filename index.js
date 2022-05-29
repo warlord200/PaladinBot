@@ -54,7 +54,7 @@ client.on('messageCreate',async message =>{
         })
     }else if(command === 'help'){
         client.commands.get('help').execute(message,args);
-    }else if(command === 'check'|| command === 'ch'){
+    }else if(command === 'trans'|| command === 'jp'){
         if(message.reference === null){
             message.channel.send('Thou shall reply to an image so I can work with');
             return;
