@@ -54,7 +54,7 @@ client.on('messageCreate',async message =>{
         })
     }else if(command === 'help'){
         client.commands.get('help').execute(message,args);
-    }else if(command === 'trans'|| command === 'jp'){
+    }else if(command === 'jp' || command === 'j'){
         if(message.reference === null){
             message.channel.send('Thou shall reply to an image so I can work with');
             return;
@@ -67,7 +67,7 @@ client.on('messageCreate',async message =>{
                             msg.attachments.first().url 
                             : msg.content;
                 console.log(reply)
-                client.commands.get('Tesseract').execute(message,reply);
+                client.commands.get('OCR').execute(message,reply);
             }
         })
     }

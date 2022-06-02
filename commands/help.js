@@ -8,7 +8,7 @@ module.exports = {
     --help        - literally the title
     --sauce / s   - reply to image with command to return sauce
     --ping        - reply with pong
-    --trans / jp  - translate image to text (currently only japanese)
+    --jp / j   - translate image to text (currently only japanese)
         `);
     }
 }
