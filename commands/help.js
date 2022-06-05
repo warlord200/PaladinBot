@@ -1,8 +1,8 @@
 module.exports = {
-    name:'help',
-    description: 'Help command',
-    execute(message, args){
-        message.channel.send(`
+  name: "help",
+  description: "Help command",
+  execute(message, args) {
+    message.channel.send(`
 *Thy requesteth is mine own order.*
         
     --help        - literally the title
@@ -10,5 +10,5 @@ module.exports = {
     --ping        - reply with pong
     --jp / j   - translate image to text (currently only japanese)
         `);
-    }
-}
+  },
+};
