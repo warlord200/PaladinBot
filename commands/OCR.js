@@ -16,6 +16,7 @@ module.exports = {
   name: "OCR",
   description: "Recognises image and converts to text",
   execute(message, reply) {
+    const originalEmbed = new MessageEmbed();
     const embed = new MessageEmbed();
 
     (async () => {
@@ -52,6 +53,7 @@ module.exports = {
               imageLink
             );
             printRecText(printedResult);
+            console.log(`After printRecText:${printedResult}`);
 
             // Perform read and await the result from URL
             async function readTextFromURL(client, url) {
@@ -83,8 +85,13 @@ module.exports = {
                 }
               }
             }
-            console.log(arrJoin);
+            console.log("Arrjoin", arrJoin);
             const arrJoined = arrJoin.join("\n");
+            originalEmbed.addFields({
+              name: "This is what I recognised",
+              value: arrJoined,
+            });
+            message.channel.send({ embeds: [originalEmbed] });
 
             let options = {
               method: "POST",
