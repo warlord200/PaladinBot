@@ -15,7 +15,7 @@ const sleep = require("util").promisify(setTimeout);
 module.exports = {
   name: "OCR",
   description: "Recognises image and converts to text",
-  execute(message, reply) {
+  execute(message, reply, command) {
     const originalEmbed = new MessageEmbed();
     const embed = new MessageEmbed();
 
@@ -91,7 +91,7 @@ module.exports = {
               name: "This is what I recognised",
               value: arrJoined,
             });
-            message.channel.send({ embeds: [originalEmbed] });
+            message.channel.send("Files received and OCR complete. . .");
 
             let options = {
               method: "POST",
@@ -124,7 +124,28 @@ module.exports = {
                 name: "Sire this the translation",
                 value: result,
               });
-              message.channel.send({ embeds: [embed] });
+
+              // if manga layout is requested
+              console.log(command);
+              if (command === "manga") {
+                const mangaEmbed = new MessageEmbed();
+                mangaEmbed.addFields(
+                  {
+                    name: "Text",
+                    value: arrJoined,
+                    inline: true,
+                  },
+                  {
+                    name: "Translation",
+                    value: result,
+                    inline: true,
+                  }
+                );
+                message.channel.send({ embeds: [mangaEmbed] });
+              } else {
+                message.channel.send({ embeds: [originalEmbed] });
+                message.channel.send({ embeds: [embed] });
+              }
             });
             console.log();
             console.log("-------------------------------------------------");
