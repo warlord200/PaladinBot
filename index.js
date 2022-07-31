@@ -9,8 +9,14 @@ const client = new DiscordJS.Client({
   intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
 });
 
-client.on("ready", () => {
+client.on("ready", (client) => {
   console.log("Bot is ready");
+  setInterval(() => {
+    client.channels.cache
+      .get("1003177181150711818")
+      .send(`I'm online guys!! Current time is ${new Date()}`);
+    console.log("Message sent!");
+  }, 300000);
 });
 
 client.commands = new DiscordJS.Collection();
