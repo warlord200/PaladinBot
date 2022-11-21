@@ -18,8 +18,8 @@ module.exports = {
 **--help**        - literally the title
 **--sauce / s**   - reply to image with command to return sauce
 **--ping**        - replies with pong!
-**--jp / j**      - translate image to text (currently only japanese)
-**--manga         - Same as translation but layout optimised for manga
+**--ocr / jp**      - translate image to text (currently only japanese)
+**--manga**         - Same as translation but layout optimised for manga
 
 More features coming soon (hopefully)
 `,

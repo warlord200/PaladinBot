@@ -83,7 +83,7 @@ client.on("messageCreate", async (message) => {
     });
   } else if (command === "help") {
     client.commands.get("help").execute(message, args);
-  } else if (command === "jp" || command === "j" || command === "manga") {
+  } else if (command === "ocr" || command === "jp" || command === "manga") {
     if (message.reference === null) {
       message.channel.send("Thou shall reply to an image so I can work with");
       return;
