@@ -2,48 +2,19 @@
 // must start with
 // pm2 start index.js --restart-delay=10000 --watch --wait-ready
 
-const dns = require("dns");
-let isConnected = false;
-
-function liveCheck() {
-  dns.resolve("www.google.com", function (err, addr) {
-    if (err) {
-      if (isConnected) {
-        console.log("disconnected");
-      }
-      isConnected = false;
-      if (process.send) process.exit(1);
-    } else {
-      if (isConnected) {
-      } else {
-        console.log("Connected to internet!");
-        if (process.send) process.send("ready");
-      }
-      isConnected = true;
-    }
-  });
-}
-liveCheck();
-
 const DiscordJS = require("discord.js");
-const { Intents } = require("discord.js");
+const { Intents, Client, Events, GatewayIntentBits } = require("discord.js");
 const dotenv = require("dotenv");
 dotenv.config();
-const prefix = "--";
+const prefix = ",";
 const fs = require("fs");
 const { setInterval } = require("timers/promises");
-const client = new DiscordJS.Client({
-  intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
+const client = new Client({
+  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages],
 });
 
 client.on("ready", (client) => {
   console.log("Bot is ready");
-  setInterval(() => {
-    client.channels.cache
-      .get("1003177181150711818")
-      .send(`I'm online guys!! Current time is ${new Date()}`);
-    console.log("Message sent!");
-  }, 300000);
 });
 
 client.commands = new DiscordJS.Collection();
@@ -107,5 +78,4 @@ client.on("messageCreate", async (message) => {
   }
 });
 
-client.login(process.env.TOKEN);
-setInterval(liveCheck(), 10000);
+client.login(process.env.DISCORD_TOKEN);
